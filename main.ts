@@ -26,13 +26,13 @@ submitBtn.addEventListener("click", () => {
   const errorMessage2 = document.createElement("p");
 
   if (time / 12 > 50) {
-    errorMessage.innerHTML = `Återbetalningstiden är för lång!<br>`;
+    errorMessage.innerHTML = `Återbetalningstiden är för lång!`;
     document.body.appendChild(errorMessage);
   } 
 
   
   if (ränta * 100 * 12 > 30) {
-    errorMessage2.innerHTML = `Räntan du har angett är för hög!<br>`;
+    errorMessage2.innerHTML = `Räntan du har angett är för hög!`;
     document.body.appendChild(errorMessage2);
   } 
 
@@ -56,8 +56,8 @@ submitBtn.addEventListener("click", () => {
 
     for (let month = 1; month <= time; month++) {
       const ränteBetalning: number = lån * ränta;
-      const installment: number = månadskostnad - ränteBetalning;
-      lån -= installment;
+      const avbetalning: number = månadskostnad - ränteBetalning;
+      lån -= avbetalning;
       if (lån <= 0) {
     
       }

@@ -57,8 +57,8 @@ if (ränta * 100 * 12 > 30) {
     if (!(ränta * 100 * 12 > 30) && !(time / 12 > 50)) {
         for (let month = 1; month <= time; month++) {
             const ränteBetalning = lån * ränta;
-            const installment = månadskostnad - ränteBetalning;
-            lån -= installment;
+            const avbetalning = månadskostnad - ränteBetalning;
+            lån -= avbetalning;
             if (lån <= 0) {
                 break;
             }
