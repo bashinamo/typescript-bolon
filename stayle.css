@@ -1,0 +1,43 @@
+
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(237, 230, 199);
+  font-family: "Inter", sans-serif;
+  margin: 1.5rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90vw;
+  height: 90vh;
+}
+
+h1 {
+  margin: 1.3rem;
+}
+
+input {
+  margin: 0.5rem;
+  padding: 0.2rem;
+}
+
+#submit-btn {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;  
+  margin: 1rem;
+  padding: 0.5rem;
+  background-color: #8f9772;
+  border: 1px solid rgb(68, 68, 68);
+  border-radius: 8px;
+}
+
+#submit-btn:hover {
+  color: rgb(98, 97, 97);
+}
