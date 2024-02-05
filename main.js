@@ -1,6 +1,6 @@
 // ha koppling till ingångarna för lon, ränta och tid
-const loanInput = document.getElementById("lon");
-const interestInput = document.getElementById("renta");
+const lonInput = document.getElementById("lon");
+const rentaInput = document.getElementById("renta");
 const timeInput = document.getElementById("time");
 
 
@@ -18,9 +18,9 @@ submitBtn.addEventListener("click", () => {
 });
 
 // värden måste konverteras från string till heltal/tal
-let lon = Number(loanInput.value)
+let lon = Number(lonInput.value)
 
-const renta = Number(interestInput.value) / 100 / 12;
+const renta = Number(rentaInput.value) / 100 / 12;
 
 const time = Number(timeInput.value) * 12;
 
