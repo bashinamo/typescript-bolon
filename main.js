@@ -1,55 +1,55 @@
 // ha koppling till ingångarna för lon, ränta och tid
-const lonInput = document.getElementById("lon");
-const rentaInput = document.getElementById("renta");
-const timeInput = document.getElementById("time");
+let lon;
+let renta;
+let time;
 
 
 // anslutning för att knappen
 const submitBtn = document.getElementById("submit-btn");
+let res = "";
 
 // funktionen matematik till kalkylator
 function calculateM(P, r, n) {
-    return (P * r * (1 + r) ** n) / ((1 + r) ** n - 1);
+    let mr = (r/100)/12;
+    let t = mr*Math.pow((1+mr),n);
+    let nm = Math.pow((1+mr), n)-1;
+    return P *(t/nm);
 }
 
 // Lägger till händelse för knappen
-submitBtn.addEventListener("click", () => {
+submitBtn.addEventListener("click",function (){
+    lon = document.getElementById("lon").value;
+    renta = document.getElementById("renta").value;
+    time = document.getElementById("time").value;
 
+    res = calculateM(lon, renta, time);
+    let totalRenta = lon * renta * time;
+    document.getElementById("resultat").innerHTML = `
+    Din totala månadskostnad blir ${res} kronor.<br>
+    Din totala räntekostnad över hela låneperioden blir ${totalRenta} kronor.`;    
+ 
 });
 
-// värden måste konverteras från string till heltal/tal
-let lon = Number(lonInput.value)
-
-const renta = Number(rentaInput.value) / 100 / 12;
-
-const time = Number(timeInput.value) * 12;
 
 
 // Kontrollera om tiden är längre än 50 /= år
-if (time / 12 > 50) {
+if (time / 12 > 40) {
     errorMessage.innerHTML = `Återbetalningstiden är för long!`;
     document.body.appendChild(errorMessage);
 }
 // Kontrollera om räntan är över 30 %
-if (renta * 100 * 12 > 30) {
+if (renta * 100 * 12 > 40) {
     errorMessage2.innerHTML = `Räntan du har angett är för hög!`;
     document.body.appendChild(errorMessage2);
 }
  // Beräkna månadskostnaden
- const monadskostnad = Number(calculateM(lon, renta, time).toFixed(2));
+ let monadskostnad = res;
+ console.log(res);
 
  // Beräkna den totala ränteavgiften
- const totalRenta = lon * renta * time;
-    // Presentera resultat för kuunden om den gick igenom
-    if (!(renta * 100 * 12 > 30) && !(time / 12 > 50)) {
-        const results = document.createElement("p");
-        results.innerHTML = `
-            Din totala månadskostnad blir ${monadskostnad} kronor.<br>
-            Din totala räntekostnad över hela loneperioden blir ${totalRenta} kronor.`;
-        document.body.appendChild(results);
-    }
-    // En betalningsplan
-    if (!(renta * 100 * 12 > 30) && !(time / 12 > 50)) {
+ let totalRenta = lon * renta * time;
+   
+    if (!(renta * 100 * 12 > 40) && !(time / 12 > 40)) {
         for (let month = 1; month <= time; month++) {
             const renteBetalning = lon * renta;
             const avbetalning = monadskostnad - renteBetalning;
